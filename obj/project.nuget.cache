@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "1r4ifwzoF20=",
+  "success": true,
+  "projectFilePath": "/Users/shubh/Documents/GitHub/CCFlockCLI/CCFlockCLI.csproj",
+  "expectedPackageFiles": [
+    "/Users/shubh/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/shubh/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/shubh/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.15/microsoft.netcore.app.host.osx-arm64.8.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

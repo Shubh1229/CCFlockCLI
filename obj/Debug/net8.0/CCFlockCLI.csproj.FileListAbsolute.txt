@@ -1,0 +1,15 @@
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.AssemblyInfoInputs.cache
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.AssemblyInfo.cs
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.csproj.CoreCompileInputs.cache
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.sourcelink.json
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/CCFlockCLI
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/CCFlockCLI.deps.json
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/CCFlockCLI.runtimeconfig.json
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/CCFlockCLI.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/CCFlockCLI.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/refint/CCFlockCLI.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.genruntimeconfig.cache
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/ref/CCFlockCLI.dll
