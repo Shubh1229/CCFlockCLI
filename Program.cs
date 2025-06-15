@@ -10,7 +10,7 @@ class Program
         var api = new WeatherAPI();
         if (args.Length == 0 || args[0] == "--help")
         {
-            Console.WriteLine("Usage: ccflock alldata | ccflock rangedata <start> <end>");
+            Console.WriteLine("Usage: ccflock alldata | ccflock random");
             return;
         }
 
