@@ -1,8 +1,3 @@
-/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/CCFlockCLI
-/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/CCFlockCLI.deps.json
-/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/CCFlockCLI.runtimeconfig.json
-/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/CCFlockCLI.dll
-/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/CCFlockCLI.pdb
 /Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/Microsoft.CSharp.dll
 /Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/Microsoft.VisualBasic.Core.dll
 /Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/Microsoft.VisualBasic.dll
@@ -191,8 +186,13 @@
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.csproj.CoreCompileInputs.cache
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.sourcelink.json
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.csproj.Up2Date
-/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.dll
-/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/refint/CCFlockCLI.dll
-/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.pdb
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/CCFlockCLI.genruntimeconfig.cache
-/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/ref/CCFlockCLI.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/ccflock
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/ccflock.deps.json
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/ccflock.runtimeconfig.json
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/ccflock.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/ccflock.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/ccflock.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/refint/ccflock.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/ccflock.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/obj/Release/net8.0/osx-x64/ref/ccflock.dll
