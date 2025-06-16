@@ -1,6 +1,7 @@
 
 
 using System.Text.Json;
+using CCFlockCLI.Services.JSON;
 
 namespace CCFlockCLI.Services
 {
@@ -8,16 +9,18 @@ namespace CCFlockCLI.Services
     {
         private readonly HttpClient http;
         private readonly string url = "https://ccflock.duckdns.org/api/localweather/alldata";
+        private readonly SerializeJSON json;
         public WeatherAPI()
         {
             http = new HttpClient();
+            json = new();
         }
         public async Task<string> GetAllWeatherData()
         {
             var res = await http.GetAsync(url);
             res.EnsureSuccessStatusCode();
             var jsonString = await res.Content.ReadAsStringAsync();
-            return JsonSerialization(jsonString);
+            return json.JsonSerialization(jsonString);
         }
         public async Task<string> GetWeatherDataRange(DateTime start, DateTime end)
         {
@@ -25,7 +28,7 @@ namespace CCFlockCLI.Services
             var res = await http.GetAsync(urlRange);
             res.EnsureSuccessStatusCode();
             var jsonString = await res.Content.ReadAsStringAsync();
-            return JsonSerialization(jsonString);
+            return json.JsonSerialization(jsonString);
         }
         public async Task<string> GetWeatherDataRangeRandom()
         {
@@ -35,18 +38,7 @@ namespace CCFlockCLI.Services
             var res = await http.GetAsync(urlRange);
             res.EnsureSuccessStatusCode();
             var jsonString = await res.Content.ReadAsStringAsync();
-            return JsonSerialization(jsonString);
-        }
-        private string JsonSerialization(string jsonString)
-        {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-            };
-            using var doc = JsonDocument.Parse(jsonString);
-            var json = JsonSerializer.Serialize(doc.RootElement, options);
-            return json;
+            return json.JsonSerialization(jsonString);
         }
         private (DateTime start, DateTime end) RandomDate()
         {

@@ -7,5 +7,9 @@
     <Nullable>enable</Nullable>
     <AssemblyName>ccflock</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JokeAPI" Version="2.0.2" />
+  </ItemGroup>
   
 </Project>

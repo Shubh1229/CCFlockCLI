@@ -1,0 +1,2 @@
+/Users/shubh/Documents/GitHub/CCFlockCLI/publish-linux/ccflock.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/publish-linux/ccflock

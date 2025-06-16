@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ccflock/1.0.0": {
+        "dependencies": {
+          "JokeAPI": "2.0.2"
+        },
+        "runtime": {
+          "ccflock.dll": {}
+        }
+      },
+      "JokeAPI/2.0.2": {
+        "runtime": {
+          "lib/net7.0/JokeAPIWrapper.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ccflock/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JokeAPI/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xBPsP3MHc82bN2RU81j4amYqdLUjRJoIgGyTqMY+Jab2MWovDI3uUe4YTBYJBZd1hsKOMCntIQXKkMsJ58qK+A==",
+      "path": "jokeapi/2.0.2",
+      "hashPath": "jokeapi.2.0.2.nupkg.sha512"
+    }
+  }
+}

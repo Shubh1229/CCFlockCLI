@@ -44,11 +44,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
+            "JokeAPI": {
               "target": "Package",
-              "version": "[8.0.15, )",
-              "autoReferenced": true
+              "version": "[2.0.2, )"
             }
           },
           "imports": [
@@ -68,19 +66,11 @@
               "version": "[8.0.15, 8.0.15]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
               "version": "[8.0.15, 8.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
               "version": "[8.0.15, 8.0.15]"
             }
           ],
@@ -90,11 +80,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "osx-x64": {
-          "#import": []
         }
       }
     }
