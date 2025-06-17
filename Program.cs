@@ -14,10 +14,10 @@ class Program
         if (args.Length == 0 || args[0] == "--help")
         {
             Console.WriteLine("Usage: ccflock alldata | ccflock random");
-            //return;
+            return;
         }
-        string word = "snake";
-        switch (word)//(args[0])
+
+        switch (args[0])
         {
             case "alldata":
                 var res = await api.GetAllWeatherData();
