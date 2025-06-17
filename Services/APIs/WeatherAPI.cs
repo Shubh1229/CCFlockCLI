@@ -3,7 +3,7 @@
 using System.Text.Json;
 using CCFlockCLI.Services.JSON;
 
-namespace CCFlockCLI.Services
+namespace CCFlockCLI.Services.APIs
 {
     public class WeatherAPI
     {

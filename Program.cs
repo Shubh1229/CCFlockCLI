@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CCFlockCLI.Services;
+using CCFlockCLI.Services.APIs;
 using CCFlockCLI.Services.Games;
 
 class Program

@@ -10,14 +10,11 @@ namespace CCFlockCLI.Services.JSON
     {
         public string JsonSerialization(string jsonString)
         {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-            };
             using var doc = JsonDocument.Parse(jsonString);
-            var json = JsonSerializer.Serialize(doc.RootElement, options);
-            return json;
+            return JsonSerializer.Serialize(doc.RootElement, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CCFlockCLI.Services.JSON;
 
-namespace CCFlockCLI.Services
+namespace CCFlockCLI.Services.APIs
 {
     public class JokeAPI
     {
