@@ -1,15 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EqFX9JX1bUg=",
+  "dgSpecHash": "v7oMAY2aFRE=",
   "success": true,
   "projectFilePath": "/Users/shubh/Documents/GitHub/CCFlockCLI/CCFlockCLI.csproj",
   "expectedPackageFiles": [
     "/Users/shubh/.nuget/packages/jokeapi/2.0.2/jokeapi.2.0.2.nupkg.sha512",
-    "/Users/shubh/.nuget/packages/microsoft.net.illink.tasks/8.0.15/microsoft.net.illink.tasks.8.0.15.nupkg.sha512",
     "/Users/shubh/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
-    "/Users/shubh/.nuget/packages/microsoft.netcore.app.runtime.osx-arm64/8.0.15/microsoft.netcore.app.runtime.osx-arm64.8.0.15.nupkg.sha512",
     "/Users/shubh/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
-    "/Users/shubh/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-arm64/8.0.15/microsoft.aspnetcore.app.runtime.osx-arm64.8.0.15.nupkg.sha512",
     "/Users/shubh/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.15/microsoft.netcore.app.host.osx-arm64.8.0.15.nupkg.sha512"
   ],
   "logs": []

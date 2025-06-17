@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CCFlockCLI.Services;
+using CCFlockCLI.Services.Games;
 
 class Program
 {
@@ -13,10 +14,10 @@ class Program
         if (args.Length == 0 || args[0] == "--help")
         {
             Console.WriteLine("Usage: ccflock alldata | ccflock random");
-            return;
+            //return;
         }
-
-        switch (args[0])
+        string word = "snake";
+        switch (word)//(args[0])
         {
             case "alldata":
                 var res = await api.GetAllWeatherData();
@@ -65,6 +66,11 @@ class Program
                         Console.WriteLine("Failed to parse joke format.");
                         Console.WriteLine(res);
                     }
+                    break;
+                }
+            case "snake":
+                {
+                    SnakeGame.Run();
                     break;
                 }
             default:
