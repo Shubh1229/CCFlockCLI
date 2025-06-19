@@ -13,6 +13,5 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.0" />
-    <PackageReference Include="System.Text.Json.SourceGeneration" Version="8.0.0" OutputItemType="Analyzer" />
   </ItemGroup>
 </Project>

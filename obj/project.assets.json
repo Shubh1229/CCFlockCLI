@@ -182,8 +182,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "JokeAPI >= 2.0.2",
-      "System.Text.Json >= 8.0.0",
-      "System.Text.Json.SourceGeneration >= 8.0.0"
+      "System.Text.Json >= 8.0.0"
     ]
   },
   "packageFolders": {
@@ -236,10 +235,6 @@
           "System.Text.Json": {
             "target": "Package",
             "version": "[8.0.0, )"
-          },
-          "System.Text.Json.SourceGeneration": {
-            "target": "Package",
-            "version": "[8.0.0, )"
           }
         },
         "imports": [
@@ -277,15 +272,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package System.Text.Json.SourceGeneration. No packages exist with this id in source(s): nuget.org",
-      "libraryId": "System.Text.Json.SourceGeneration",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
     {
       "code": "NU1903",
       "level": "Warning",

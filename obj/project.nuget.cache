@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "wOAWtp00ZsU=",
-  "success": false,
+  "dgSpecHash": "vGa9vCrrjpo=",
+  "success": true,
   "projectFilePath": "/Users/shubh/Documents/GitHub/CCFlockCLI/CCFlockCLI.csproj",
   "expectedPackageFiles": [
     "/Users/shubh/.nuget/packages/jokeapi/2.0.2/jokeapi.2.0.2.nupkg.sha512",
@@ -12,15 +12,6 @@
     "/Users/shubh/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.15/microsoft.netcore.app.host.osx-arm64.8.0.15.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package System.Text.Json.SourceGeneration. No packages exist with this id in source(s): nuget.org",
-      "libraryId": "System.Text.Json.SourceGeneration",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
     {
       "code": "NU1903",
       "level": "Warning",
