@@ -48,6 +48,16 @@
               "target": "Package",
               "version": "[2.0.2, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.15, )",
+              "autoReferenced": true
+            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -70,11 +80,19 @@
               "version": "[8.0.15, 8.0.15]"
             },
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.osx-arm64",
               "version": "[8.0.15, 8.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
               "version": "[8.0.15, 8.0.15]"
             }
           ],
@@ -84,6 +102,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "osx-arm64": {
+          "#import": []
         }
       }
     }
