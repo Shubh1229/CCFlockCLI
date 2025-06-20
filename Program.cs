@@ -33,13 +33,12 @@ class Program
         var jokeapi = new JokeAPI();
         var soccerapi = new SoccerAPI();
         Console.Clear();
-        // if (args.Length == 0 || args[0] == "--help" || args[0] == "-h" || args[0] == "help")
-        // {
-        //     Help();
-        //     return;
-        // }
-        string word = "soccer";
-        switch (word)//(args[0])
+        if (args.Length == 0 || args[0] == "--help" || args[0] == "-h" || args[0] == "help")
+        {
+            Help();
+            return;
+        }
+        switch (args[0])
         {
             case "alldata":
                 var res = await api.GetAllWeatherData();
