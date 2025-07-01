@@ -48,15 +48,17 @@ namespace CCFlockCLI.Services.APIs
             if (string.IsNullOrWhiteSpace(APIKEY))
                 throw new InvalidOperationException("API Key is not set. Use: ccflock soccer <api-key>");
             bool found = false;
-            foreach (var code in Enum.GetNames(typeof(LeagueCodes))) {
+            foreach (var code in Enum.GetNames(typeof(LeagueCodes)))
+            {
                 if (code == leaguecode)
                 {
                     found = true;
                 }
             }
-            if (!found) {
+            if (!found)
+            {
                 Console.Error.WriteLine("Incorrect League Code");
-                return new LeagueDTO { Status = Codes.BAD_REQUEST , Message = $"{leaguecode} Is Not A Valid League Code" };
+                return new LeagueDTO { Status = Codes.BAD_REQUEST, Message = $"{leaguecode} Is Not A Valid League Code" };
             }
             http.DefaultRequestHeaders.Clear();
             http.DefaultRequestHeaders.Add("X-Auth-Token", APIKEY);
@@ -65,7 +67,7 @@ namespace CCFlockCLI.Services.APIs
             res.EnsureSuccessStatusCode();
 
             var content = await res.Content.ReadAsStringAsync();
-            
+
             LEAGUE = JsonSerializer.Deserialize<LeagueDTO>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
 
             return LEAGUE;
@@ -142,7 +144,7 @@ namespace CCFlockCLI.Services.APIs
             }
         }
 
-        public async Task<Player> GetPlayer(string? player)
+        public async Task<Player> GetPlayer(string teamname, string? player)
         {
             if (TEAM == null || string.IsNullOrWhiteSpace($"{TEAM.id}"))
             {
@@ -152,6 +154,7 @@ namespace CCFlockCLI.Services.APIs
                     name = "Team not initialized. Please load a team first using GetTeam()."
                 };
             }
+            if (TEAM.name != teamname) await GetTeam(teamname);
             if (player == null)
             {
                 return new Player
@@ -167,23 +170,6 @@ namespace CCFlockCLI.Services.APIs
             var doc = JsonDocument.Parse(content);
             foreach (var p in doc.RootElement.GetProperty("squad").EnumerateArray())
             {
-                // TEAM.squad.Add(new Player
-                // {
-                //     id = p.GetProperty("id").GetInt32(),
-                //     firstName = p.GetProperty("firstName").GetString(),
-                //     lastName = p.GetProperty("lastName").GetString(),
-                //     name = p.GetProperty("name").GetString(),
-                //     position = p.GetProperty("position").GetString(),
-                //     dateOfBirth = p.GetProperty("dateOfBirth").GetString(),
-                //     nationality = p.GetProperty("nationality").GetString(),
-                //     shirtNumber = p.GetProperty("shirtNumber").GetInt32(),
-                //     marketValue = p.GetProperty("marketValue").GetInt32(),
-                //     contract = new Contract
-                //     {
-                //         start = p.GetProperty("contract").GetProperty("start").GetString(),
-                //         until = p.GetProperty("contract").GetProperty("until").GetString()
-                //     }
-                // });
                 TEAM.squad.Add(new Player
                 {
                     id = p.GetProperty("id").GetInt32(),
@@ -226,6 +212,157 @@ namespace CCFlockCLI.Services.APIs
             }
             return playerFound;
         }
+
+        public async Task GetAllPlayers(string teamName, int? limit, bool sortAsc, bool sortDesc)
+        {
+            if (TEAM == null || string.IsNullOrWhiteSpace($"{TEAM.id}") || TEAM.name != teamName)
+            {
+                await GetTeam(teamName);
+            }
+
+            if (TEAM?.squad == null || TEAM.squad.Count == 0)
+            {
+                Console.WriteLine("No player data available for this team.");
+                return;
+            }
+
+            var players = TEAM.squad;
+
+            if (sortAsc)
+                players = players.OrderBy(p => p.name).ToList();
+            else if (sortDesc)
+                players = players.OrderByDescending(p => p.name).ToList();
+
+            if (limit.HasValue)
+                players = players.Take(limit.Value).ToList();
+
+            foreach (var p in players)
+            {
+                Console.WriteLine(p.ToString());
+                Console.WriteLine();
+            }
+        }
+
+        public async Task GetRandomPlayers(string teamName, int? limit, bool sortAsc, bool sortDesc)
+        {
+            if (TEAM == null || string.IsNullOrWhiteSpace($"{TEAM.id}") || TEAM.name != teamName)
+            {
+                await GetTeam(teamName);
+            }
+
+            if (TEAM?.squad == null || TEAM.squad.Count == 0)
+            {
+                Console.WriteLine("No player data available for this team.");
+                return;
+            }
+
+            var random = new Random();
+            var shuffled = TEAM.squad.OrderBy(_ => random.Next()).ToList();
+
+            if (sortAsc)
+                shuffled = shuffled.OrderBy(p => p.name).ToList();
+            else if (sortDesc)
+                shuffled = shuffled.OrderByDescending(p => p.name).ToList();
+
+            if (limit.HasValue)
+                shuffled = shuffled.Take(limit.Value).ToList();
+
+            foreach (var p in shuffled)
+            {
+                Console.WriteLine(p.ToString());
+                Console.WriteLine();
+            }
+        }
+        public async Task GetAllLeagues(int? limit, bool asc, bool desc)
+        {
+            var codes = Enum.GetValues<LeagueCodes>().Select(code => code.ToString());
+
+            if (asc)
+                codes = codes.OrderBy(c => c);
+            else if (desc)
+                codes = codes.OrderByDescending(c => c);
+
+            if (limit.HasValue)
+                codes = codes.Take(limit.Value);
+
+            foreach (var code in codes)
+            {
+                var league = await GetLeagueData(code);
+                if (league.Status == Codes.OK)
+                {
+                    Console.WriteLine(league.ToString());
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        public async Task GetRandomLeagues(int? limit)
+        {
+            var codes = Enum.GetValues<LeagueCodes>().Select(c => c.ToString()).ToList();
+            var rnd = new Random();
+            var shuffled = codes.OrderBy(_ => rnd.Next());
+
+            if (limit.HasValue)
+                //shuffled = shuffled.Take(limit.Value);
+
+            foreach (var code in shuffled)
+            {
+                var league = await GetLeagueData(code);
+                if (league.Status == Codes.OK)
+                {
+                    Console.WriteLine(league.ToString());
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        public async Task GetAllTeams(int? limit, bool asc, bool desc)
+        {
+            if (LEAGUE == null || LEAGUE.Teams == null || LEAGUE.Teams.Count == 0)
+            {
+                Console.WriteLine("No team data loaded. Use a valid league first.");
+                return;
+            }
+
+            var teams = LEAGUE.Teams;
+
+            if (asc)
+                teams = teams.OrderBy(t => t.name).ToList();
+            else if (desc)
+                teams = teams.OrderByDescending(t => t.name).ToList();
+
+            if (limit.HasValue)
+                teams = teams.Take(limit.Value).ToList();
+
+            foreach (var team in teams)
+            {
+                Console.WriteLine(team.ToString());
+                Console.WriteLine();
+            }
+        }
+
+        public async Task GetRandomTeams(int? limit)
+        {
+            if (LEAGUE == null || LEAGUE.Teams == null || LEAGUE.Teams.Count == 0)
+            {
+                Console.WriteLine("No team data loaded. Use a valid league first.");
+                return;
+            }
+
+            var rnd = new Random();
+            var shuffled = LEAGUE.Teams.OrderBy(_ => rnd.Next()).ToList();
+
+            if (limit.HasValue)
+                shuffled = shuffled.Take(limit.Value).ToList();
+
+            foreach (var team in shuffled)
+            {
+                Console.WriteLine(team.ToString());
+                Console.WriteLine();
+            }
+        }
+
+
     }
 }
 
@@ -279,7 +416,7 @@ namespace CCFlockCLI.Services.APIs.Models.SoccerAPI
                 : "No squad info";
 
             return $@"
-                    🏟️  {name} ({tla})
+                    🏟️  {name.ToUpper()} ({tla.ToUpper()})
                     📍 Venue: {venue}
                     🎨 Colors: {clubColors}
                     🌐 Website: {website}

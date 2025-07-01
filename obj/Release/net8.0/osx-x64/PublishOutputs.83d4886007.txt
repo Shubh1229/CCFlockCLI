@@ -1,0 +1,2 @@
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/publish/ccflock.pdb
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Release/net8.0/osx-x64/publish/ccflock
