@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ccflock")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+653da2d4730c5fdae18a93248e4382b4be2135fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c3eb50dc031677d044f4177a95b146336df9de6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ccflock")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ccflock")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
