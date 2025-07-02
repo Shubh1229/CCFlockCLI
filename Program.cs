@@ -228,7 +228,7 @@ class Program
         Console.WriteLine("  ccflock soccer <API_KEY>       First-time setup");
         Console.WriteLine("  ccflock soccer help            Show all available leagues");
         Console.WriteLine("  ccflock soccer <LEAGUE_CODE>   Show league info (e.g., PL, SA, etc.)");
-        Console.WriteLine("  ccflock key                    Starts ccflock's API Key Management API");
+        Console.WriteLine("  ccflock key                    Starts ccflock's API Key Management API\n\nV1.2.8");
     }
     
     
