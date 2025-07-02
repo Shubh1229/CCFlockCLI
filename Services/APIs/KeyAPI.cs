@@ -280,7 +280,10 @@ namespace CCFlockCLI.Services.APIs
             {
                 if (!Directory.Exists(secretDir))
                     Directory.CreateDirectory(secretDir);
-
+                if (OperatingSystem.IsWindows())
+                {
+                    File.Decrypt(secretFile);
+                }
                 if (File.Exists(secretFile))
                 {
                     var encryptedJson = File.ReadAllBytes(secretFile);
@@ -303,6 +306,10 @@ namespace CCFlockCLI.Services.APIs
                 var json = JsonSerializer.Serialize(entries, new JsonSerializerOptions { WriteIndented = true });
                 var encryptedJson = SecretProtector.Encrypt(json);
                 File.WriteAllBytes(secretFile, encryptedJson);
+                if (OperatingSystem.IsWindows())
+                {
+                    File.Encrypt(secretFile);
+                }
             }
             catch (Exception ex)
             {
@@ -324,7 +331,11 @@ namespace CCFlockCLI.Services.APIs
                     aes.GenerateKey();
                     var encryptionkey = Convert.ToBase64String(aes.Key);
                     var keybytes = Encoding.UTF8.GetBytes(encryptionkey);
-                    File.WriteAllBytes(secretKey,keybytes);
+                    File.WriteAllBytes(secretKey, keybytes);
+                    if (System.OperatingSystem.IsWindows())
+                    {
+                        File.Encrypt(secretKey);
+                    }
                 }
             }
             catch (System.Exception ex)

@@ -1,11 +1,20 @@
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 public static class SecretProtector
 {
     private static readonly string secretDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ccflock");
     private static readonly string secretKey = Path.Combine(secretDir, "APIsecretKeyAPIKEY.txt");
-    private static readonly string key = Encoding.UTF8.GetString(File.ReadAllBytes(secretKey));
+    private static string key = LoadKey();
+    private static string LoadKey()
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            File.Decrypt(secretKey);
+        }
+        return Encoding.UTF8.GetString(File.ReadAllBytes(secretKey));
+    }
     public static byte[] Encrypt(string plaintext)
     {
         using var aes = Aes.Create();

@@ -190,7 +190,7 @@
         }
       }
     },
-    "net8.0/osx-arm64": {
+    "net8.0/win-x64": {
       "JokeAPI/2.0.2": {
         "type": "package",
         "compile": {
@@ -813,11 +813,11 @@
             "version": "[8.0.15, 8.0.15]"
           },
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
             "version": "[8.0.15, 8.0.15]"
           },
           {
-            "name": "Microsoft.NETCore.App.Host.osx-arm64",
+            "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[8.0.15, 8.0.15]"
           },
           {
@@ -825,7 +825,7 @@
             "version": "[8.0.15, 8.0.15]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
             "version": "[8.0.15, 8.0.15]"
           }
         ],
@@ -838,7 +838,7 @@
       }
     },
     "runtimes": {
-      "osx-arm64": {
+      "win-x64": {
         "#import": []
       }
     }
@@ -852,7 +852,7 @@
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net8.0",
-        "net8.0/osx-arm64"
+        "net8.0/win-x64"
       ]
     },
     {
@@ -863,7 +863,7 @@
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net8.0",
-        "net8.0/osx-arm64"
+        "net8.0/win-x64"
       ]
     }
   ]
