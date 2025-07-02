@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -322,7 +323,8 @@ namespace CCFlockCLI.Services.APIs
                     aes.KeySize = 256;
                     aes.GenerateKey();
                     var encryptionkey = Convert.ToBase64String(aes.Key);
-                    File.WriteAllText(secretKey,encryptionkey);
+                    var keybytes = Encoding.UTF8.GetBytes(encryptionkey);
+                    File.WriteAllBytes(secretKey,keybytes);
                 }
             }
             catch (System.Exception ex)
