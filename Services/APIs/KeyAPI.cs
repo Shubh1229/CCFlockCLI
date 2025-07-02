@@ -30,7 +30,7 @@ namespace CCFlockCLI.Services.APIs
                             checkhelp = true;
                             Console.WriteLine("To Use 'ccflock key' type the key name to start\n\tIf your key name has not been entered before or was entered incorrectly the program will generate a new entry\n\tIf the key name given is found then the API key will be given");
                             Console.WriteLine("Once you have found your API key you can execute the following commands:\n\tdel \t\tdeletes entry\n\tmodname \t\tupdates the API Key Name\n\tmodkey \t\tupdates the API Key");
-                            Console.WriteLine("\n\tmodcreds \t\tupdated the amount of credits available to API Key\n\t-d \t\tAdd to any command to also update Expiration Date of key (NOTE: if key is already expired not including this will automatically delete API entry)\nAny other command or no command given will terminate the session");
+                            Console.WriteLine("\n\tmodcreds \t\tupdated the amount of credits available to API Key\n\tmodweb \t\tUpdate Website associated with API entry\n\t-d \t\tAdd to any command to also update Expiration Date of key (NOTE: if key is already expired not including this will automatically delete API entry)\nAny other command or no command given will terminate the session");
                             break;
                         }
                     case "EXIT":
@@ -98,7 +98,7 @@ namespace CCFlockCLI.Services.APIs
                             help = true;
                             Console.WriteLine("To Use 'ccflock key' type the key name to start\n\tIf your key name has not been entered before or was entered incorrectly the program will generate a new entry\n\tIf the key name given is found then the API key will be given");
                             Console.WriteLine("Once you have found your API key you can execute the following commands:\n\tdel \t\tdeletes entry\n\tmodname \t\tupdates the API Key Name\n\tmodkey \t\tupdates the API Key");
-                            Console.WriteLine("\n\tmodcreds \t\tupdated the amount of credits available to API Key\n\t-d \t\tAdd to any command to also update Expiration Date of key (NOTE: if key is already expired not including this will automatically delete API entry)\nAny other command or no command given will terminate the session");
+                            Console.WriteLine("\n\tmodcreds \t\tupdated the amount of credits available to API Key\n\tmodweb \t\tUpdate Website associated with API entry\n\t-d \t\tAdd to any command to also update Expiration Date of key (NOTE: if key is already expired not including this will automatically delete API entry)\nAny other command or no command given will terminate the session");
                             break;
                         }
                     case "EXIT":
@@ -175,6 +175,18 @@ namespace CCFlockCLI.Services.APIs
                             }
                             break;
                         }
+                    case "modweb":
+                        {
+                            Console.WriteLine($"What is the new Website associated with API entry {entry.apiName}?");
+                            var webinpt = Console.ReadLine();
+                            if (webinpt == null || webinpt.Trim() == "")
+                            {
+                                Console.WriteLine($"Input {webinpt} is invalid: Cannot be NULL or EMPTY");
+                                return;
+                            }
+                            entry.apiWebsite = webinpt;
+                            break;
+                        }
                     default:
                         break;
                 }
@@ -220,6 +232,12 @@ namespace CCFlockCLI.Services.APIs
                 apiName = name,
                 apiKey = key
             };
+            Console.WriteLine("Enter a Website associated with the API Key (optional)");
+            var webinpt = Console.ReadLine();
+            if (webinpt != null && webinpt.Trim() != "")
+            {
+                addEntry.apiWebsite = webinpt;
+            }
             Console.WriteLine("Enter an Expiration Date for Key (optional)");
             var exprdt = Console.ReadLine();
             if (exprdt != null && exprdt.Trim() != "")
@@ -295,6 +313,7 @@ namespace CCFlockCLI.Services.APIs
         public DateTime lastAccessed { get; set; } = DateTime.MinValue;
         public DateOnly expirationDate { get; set; } = DateOnly.MinValue;
         public int credits { get; set; } = int.MinValue;
+        public string apiWebsite { get; set; } = "unkown";
 
         public override string ToString()
         {
@@ -302,6 +321,7 @@ namespace CCFlockCLI.Services.APIs
             {
                 $"API Name       : {apiName}",
                 $"API Key        : {apiKey}",
+                $"API Website    : {apiWebsite}",
                 $"Entry ID       : {entryID}",
                 $"Created        : {created}"
             };
