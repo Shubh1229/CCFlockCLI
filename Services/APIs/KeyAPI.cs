@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -11,10 +12,12 @@ namespace CCFlockCLI.Services.APIs
     {
         private static readonly string secretDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ccflock");
         private static readonly string secretFile = Path.Combine(secretDir, "APIsecrets.json");
+        private static readonly string secretKey = Path.Combine(secretDir, "APIsecretKeyAPIKEY.txt");
         private static List<Entry> entries = new();
         public static void Run()
         {
             Console.Clear();
+            CheckEncryptedKey();
             while (true)
             {
                 var input = Console.ReadLine();
@@ -214,7 +217,7 @@ namespace CCFlockCLI.Services.APIs
                 }
                 break;
             }
-            
+
         }
 
         private static void CreateEntry(string input)
@@ -301,6 +304,29 @@ namespace CCFlockCLI.Services.APIs
             catch (Exception ex)
             {
                 Console.WriteLine($"Error saving secrets: {ex.Message}");
+            }
+        }
+        private static void CheckEncryptedKey()
+        {
+            try
+            {
+                if (!Directory.Exists(secretDir))
+                {
+                    Directory.CreateDirectory(secretDir);
+                }
+                if (!File.Exists(secretKey))
+                {
+                    using Aes aes = Aes.Create();
+                    aes.KeySize = 256;
+                    aes.GenerateKey();
+                    var encryptionkey = Convert.ToBase64String(aes.Key);
+                    File.WriteAllText(secretKey,encryptionkey);
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+                Console.WriteLine($"Error saving encryption key: {ex.Message}");
             }
         }
     }
