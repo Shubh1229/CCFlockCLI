@@ -282,8 +282,9 @@ namespace CCFlockCLI.Services.APIs
 
                 if (File.Exists(secretFile))
                 {
-                    var json = File.ReadAllText(secretFile);
-                    var loaded = JsonSerializer.Deserialize<List<Entry>>(json);
+                    var encryptedJson = File.ReadAllBytes(secretFile);
+                    var decryptedJson = SecretProtector.Decrypt(encryptedJson);
+                    var loaded = JsonSerializer.Deserialize<List<Entry>>(decryptedJson);
                     if (loaded != null)
                         entries = loaded;
                 }
@@ -299,7 +300,8 @@ namespace CCFlockCLI.Services.APIs
             try
             {
                 var json = JsonSerializer.Serialize(entries, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(secretFile, json);
+                var encryptedJson = SecretProtector.Encrypt(json);
+                File.WriteAllBytes(secretFile, encryptedJson);
             }
             catch (Exception ex)
             {
