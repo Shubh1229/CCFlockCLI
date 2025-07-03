@@ -43,7 +43,30 @@ brew install ccflock
 
 ### 🪟 Windows
 
-Build using the instructions below, or use a prebuilt executable from [Releases](https://github.com/Shubh1229/CCFlockCLI/releases).
+You can either build the CLI yourself (see below) or download a prebuilt executable from the [Releases page](https://github.com/Shubh1229/CCFlockCLI/releases).
+
+#### ✅ Quick Install Instructions
+
+1. Download the executable:
+   - From the latest [Windows release](https://github.com/Shubh1229/CCFlockCLI/releases/tag/v1.2.8-Windows), **or**
+   - From the `main` branch in the [`publish-windows`](https://github.com/Shubh1229/CCFlockCLI/tree/main/publish-windows) folder
+
+2. Move the `ccflock.exe` file to a dedicated folder (e.g., `C:\CCFlockCLI`).  
+   ⚠️ Avoid keeping it in your Downloads folder.
+
+3. Add that folder to your system's `PATH`:
+   - Press the `Windows` key and search for **"Environment Variables"**
+   - Click **"Edit the system environment variables"**
+   - In the **System Properties** window, click **"Environment Variables..."**
+   - Under **User variables**, find and select the `Path` variable, then click **Edit**
+   - Click **"Browse..."**, and select the folder where `ccflock.exe` is stored
+   - Click **OK** to close all windows
+
+4. Open a new PowerShell or Command Prompt window
+
+5. Run:
+   ```powershell
+   ccflock -h
 
 ---
 
@@ -126,4 +149,4 @@ GitHub: [@Shubh1229](https://github.com/Shubh1229)
 
 ## 📝 License
 
-Licensed under the Apache 2.0 License. See `LICENSE` for details.
+Licensed under the MIT License. See `LICENSE` for details.
