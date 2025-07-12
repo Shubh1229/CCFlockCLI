@@ -24,3 +24,4 @@
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/ccflock.pdb
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/CCFlockCLI.genruntimeconfig.cache
 /Users/shubh/Documents/GitHub/CCFlockCLI/obj/Debug/net8.0/ref/ccflock.dll
+/Users/shubh/Documents/GitHub/CCFlockCLI/bin/Debug/net8.0/Spectre.Console.dll

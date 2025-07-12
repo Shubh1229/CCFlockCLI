@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CCFlockCLI.Services;
 using CCFlockCLI.Services.APIs;
 using CCFlockCLI.Services.APIs.Models.SoccerAPI;
 using CCFlockCLI.Services.APIs.SoccerAPIService;
@@ -188,6 +189,114 @@ class Program
             case "key":
                 {
                     KeyAPI.Run();
+                    break;
+                }
+            case "alert":
+                {
+
+                    if ((args.Contains("-t") || args.Contains("--title")) && (args.Contains("-m") || args.Contains("--message")) && (args.Contains("-d") || args.Contains("--duration")))
+                    {
+                        string message = "";
+                        string title = "";
+                        string duration = "";
+                        for (int i = 0; i < args.Length; i++)
+                        {
+                            if (args[i] == "-m" || args[i] == "--message")
+                            {
+                                i++;
+                                while (args[i] != "-t" && args[i] != "--test" && args[i] != "-d" && args[i] != "--duration" && i < args.Length)
+                                {
+                                    message += args[i++] + " ";
+                                }
+                                i--;
+                            }
+                            else if (args[i] == "-t" || args[i] == "--title")
+                            {
+                                i++;
+                                var cur = args[i];
+                                while (args[i] != "-m" && args[i] != "--message" && args[i] != "-d" && args[i] != "--duration" && i < args.Length)
+                                {
+                                    title += args[i++] + " ";
+                                }
+                                i--;
+                            }
+                            else if (args[i] == "-d" || args[i] == "--duration")
+                            {
+                                duration = args[i + 1];
+                            }
+                        }
+                        message = message.Trim();
+                        title = title.Trim();
+                        duration = duration.Trim();
+                        await AlertAPI.Run(message, title, duration);
+                    }
+                    else if ((args.Contains("-t") || args.Contains("--title")) && (args.Contains("-m") || args.Contains("--message")))
+                    {
+                        string message = "";
+                        string title = "";
+                        for (int i = 0; i < args.Length; i++)
+                        {
+                            if (args[i] == "-m" || args[i] == "--message")
+                            {
+                                i++;
+                                while (args[i] != "-t" && args[i] != "--test" && i < args.Length)
+                                {
+                                    message = args[i++];
+                                }
+                                i--;
+                            }
+                            else if (args[i] == "-t" || args[i] == "--title")
+                            {
+                                i++;
+                                while (args[i] != "-m" && args[i] != "--message" && i < args.Length)
+                                {
+                                    title = args[i++];
+                                }
+                                i--;
+                            }
+                        }
+                        await AlertAPI.Run(message, title);
+                    }
+                    else if (args.Length == 1)
+                    {
+                        await AlertAPI.Run();
+                    }
+                    else if (args[1] == "-m" || args[1] == "--message")
+                    {
+                        string message = "";
+                        for (int i = 2; i < args.Length; i++)
+                        {
+                            message += args[i] + " ";
+                        }
+                        message.Trim();
+                        await AlertAPI.Run(message, false);
+                    }
+                    else if (args[1] == "-t" || args[1] == "--title")
+                    {
+                        string title = "";
+                        for (int i = 2; i < args.Length; i++)
+                        {
+                            title += args[i] + " ";
+                        }
+                        title.Trim();
+                        await AlertAPI.Run(title, true);
+                    }
+                    else if (args.Length == 3 && args[1] == "--trigger")
+                    {
+                        if (!Guid.TryParse(args[2], out Guid id))
+                        {
+                            throw new Exception("Invalid or missing alert ID.");
+                        }
+                        await AlertAPI.BackgroundTaskAsync(id);
+                    }
+                    else if (args[1] == "-l" || args[1] == "--list")
+                    {
+                        await AlertAPI.ListAll();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect use of alert. Try:\n\t-m <message>\n\t-t <title>\n\t-d <duration>");
+                    }
                     break;
                 }
             default:
